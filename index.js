@@ -6,4 +6,14 @@ for (let i = 0; i < 16 * 16; i++) {
     container.appendChild(cell);                // add it to the container
 }
 
+function changeColor(event){
+event.target.style.backgroundColor = getRandomColor()}
 
+function getRandomColor(){
+const colors = ["red","yellow","purple", "green", "orange", "blue"];
+
+return colors [Math.floor(Math.random()* colors.length)]
+}
+
+
+container.addEventListener("mouseover", changeColor)
