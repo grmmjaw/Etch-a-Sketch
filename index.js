@@ -22,32 +22,40 @@ btn.addEventListener(
     "click", 
     () => {
  
-      if (container.hasChildNodes){
+      if (container.hasChildNodes()){
 deleteChild()
+        return
+
 }
     const size = changeGridSize();
 
      for (let i = 0; i < size * size; i++) {
     const cell = document.createElement("div"); 
     cell.classList.add("cell") // make a new <div>
-    container.appendChild(cell);}  
+   
+  cell.style.flex = `0 0 calc(100% / ${size})`;
+  
+ container.appendChild(cell);}  
      })
-
+   
 
 function changeGridSize(){
-   const input = prompt("Set Grid Size (limit 100x100)");
-    const result = parseInt(input) 
-console.log(result)
-    return result
-}
-     
+   const input = prompt("Set Grid Size (10-100)");
+    const result = parseInt(input);
+if (parseInt(input) < 10){
+
+alert("Choose number above 10")
+return}
+
+if (parseInt(input) > 100){
+alert("Choose number below 100")
+return}
+
+return result}
 
 function deleteChild(){
     while (container.firstChild){
         container.removeChild(container.firstChild)
     }
-}
-function addNewGridSize(){
-
 }
 
